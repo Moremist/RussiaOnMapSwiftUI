@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		6F3E1ED22737094F00FCE6E6 /* MapSwiftUITestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E1ED12737094F00FCE6E6 /* MapSwiftUITestApp.swift */; };
-		6F3E1ED42737094F00FCE6E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E1ED32737094F00FCE6E6 /* ContentView.swift */; };
+		6F3E1ED42737094F00FCE6E6 /* MainMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E1ED32737094F00FCE6E6 /* MainMapView.swift */; };
 		6F3E1ED62737095100FCE6E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3E1ED52737095100FCE6E6 /* Assets.xcassets */; };
 		6F3E1ED92737095100FCE6E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3E1ED82737095100FCE6E6 /* Preview Assets.xcassets */; };
+		6F3E1EE027370E6300FCE6E6 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E1EDF27370E6300FCE6E6 /* MapModel.swift */; };
+		6F3E1EE22737190200FCE6E6 /* MapDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E1EE12737190200FCE6E6 /* MapDataModel.swift */; };
+		6F3E1EE42737B9EC00FCE6E6 /* MapViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E1EE32737B9EC00FCE6E6 /* MapViewCustom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6F3E1ECE2737094F00FCE6E6 /* MapSwiftUITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSwiftUITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3E1ED12737094F00FCE6E6 /* MapSwiftUITestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSwiftUITestApp.swift; sourceTree = "<group>"; };
-		6F3E1ED32737094F00FCE6E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6F3E1ED32737094F00FCE6E6 /* MainMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapView.swift; sourceTree = "<group>"; };
 		6F3E1ED52737095100FCE6E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F3E1ED82737095100FCE6E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6F3E1EDF27370E6300FCE6E6 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		6F3E1EE12737190200FCE6E6 /* MapDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataModel.swift; sourceTree = "<group>"; };
+		6F3E1EE32737B9EC00FCE6E6 /* MapViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCustom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +57,11 @@
 		6F3E1ED02737094F00FCE6E6 /* MapSwiftUITest */ = {
 			isa = PBXGroup;
 			children = (
+				6F3E1EE32737B9EC00FCE6E6 /* MapViewCustom.swift */,
 				6F3E1ED12737094F00FCE6E6 /* MapSwiftUITestApp.swift */,
-				6F3E1ED32737094F00FCE6E6 /* ContentView.swift */,
+				6F3E1ED32737094F00FCE6E6 /* MainMapView.swift */,
+				6F3E1EDF27370E6300FCE6E6 /* MapModel.swift */,
+				6F3E1EE12737190200FCE6E6 /* MapDataModel.swift */,
 				6F3E1ED52737095100FCE6E6 /* Assets.xcassets */,
 				6F3E1ED72737095100FCE6E6 /* Preview Content */,
 			);
@@ -137,7 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F3E1ED42737094F00FCE6E6 /* ContentView.swift in Sources */,
+				6F3E1ED42737094F00FCE6E6 /* MainMapView.swift in Sources */,
+				6F3E1EE027370E6300FCE6E6 /* MapModel.swift in Sources */,
+				6F3E1EE42737B9EC00FCE6E6 /* MapViewCustom.swift in Sources */,
+				6F3E1EE22737190200FCE6E6 /* MapDataModel.swift in Sources */,
 				6F3E1ED22737094F00FCE6E6 /* MapSwiftUITestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
