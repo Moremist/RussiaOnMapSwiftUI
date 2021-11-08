@@ -13,8 +13,6 @@ struct MapModel {
     @State var centerRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 64.66890367425933, longitude: 95.74478061855717), span: MKCoordinateSpan(latitudeDelta: 100, longitudeDelta: 100)
       )
     
-    
-    
     //Мой стандартный метод для работы с URLSession
     
     private func downloadData(from url: URL, complitionHandler: @escaping (Data?, URLResponse?, Error?) -> ()) {
@@ -59,7 +57,7 @@ struct MapModel {
     }
     
     
-    //Я оставил эту часть кода, так как понимаю, что GeoJSON можно распарсить обычным MKGeoJSONDecoder, но я с ним не работал и по данному GeoJSON находились координаты 180+, на что парсер ругался. Поэтому принято решение парсить самостоятельно.
+    //Я оставил эту часть кода, так как понимаю, что GeoJSON можно распарсить обычным MKGeoJSONDecoder, но по данному GeoJSON находились координаты 180+, на что парсер ругался. Поэтому принято решение парсить самостоятельно.
     
 //    func decodeGeoJSON(data: Data) -> [MKOverlay] {
 //

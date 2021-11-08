@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F27F4D7273939F5001CF5A9 /* DistanceTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F27F4D6273939F5001CF5A9 /* DistanceTextView.swift */; };
+		6F27F4D927394524001CF5A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F27F4D827394524001CF5A9 /* LoadingView.swift */; };
 		6F3E1ED22737094F00FCE6E6 /* MapSwiftUITestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E1ED12737094F00FCE6E6 /* MapSwiftUITestApp.swift */; };
 		6F3E1ED42737094F00FCE6E6 /* MainMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E1ED32737094F00FCE6E6 /* MainMapView.swift */; };
 		6F3E1ED62737095100FCE6E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3E1ED52737095100FCE6E6 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F27F4D6273939F5001CF5A9 /* DistanceTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTextView.swift; sourceTree = "<group>"; };
+		6F27F4D827394524001CF5A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		6F3E1ECE2737094F00FCE6E6 /* MapSwiftUITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSwiftUITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3E1ED12737094F00FCE6E6 /* MapSwiftUITestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSwiftUITestApp.swift; sourceTree = "<group>"; };
 		6F3E1ED32737094F00FCE6E6 /* MainMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapView.swift; sourceTree = "<group>"; };
@@ -59,7 +63,9 @@
 			children = (
 				6F3E1EE32737B9EC00FCE6E6 /* MapViewCustom.swift */,
 				6F3E1ED12737094F00FCE6E6 /* MapSwiftUITestApp.swift */,
+				6F27F4D6273939F5001CF5A9 /* DistanceTextView.swift */,
 				6F3E1ED32737094F00FCE6E6 /* MainMapView.swift */,
+				6F27F4D827394524001CF5A9 /* LoadingView.swift */,
 				6F3E1EDF27370E6300FCE6E6 /* MapModel.swift */,
 				6F3E1EE12737190200FCE6E6 /* GeoJSONModel.swift */,
 				6F3E1ED52737095100FCE6E6 /* Assets.xcassets */,
@@ -148,8 +154,10 @@
 			files = (
 				6F3E1ED42737094F00FCE6E6 /* MainMapView.swift in Sources */,
 				6F3E1EE027370E6300FCE6E6 /* MapModel.swift in Sources */,
+				6F27F4D7273939F5001CF5A9 /* DistanceTextView.swift in Sources */,
 				6F3E1EE42737B9EC00FCE6E6 /* MapViewCustom.swift in Sources */,
 				6F3E1EE22737190200FCE6E6 /* GeoJSONModel.swift in Sources */,
+				6F27F4D927394524001CF5A9 /* LoadingView.swift in Sources */,
 				6F3E1ED22737094F00FCE6E6 /* MapSwiftUITestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
