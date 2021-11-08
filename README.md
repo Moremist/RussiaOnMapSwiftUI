@@ -15,5 +15,4 @@
 
 ##Скриншоты
 
-![Simulator Screen Shot - iPhone 12 - 2021-11-08 at 23 56 09](https://user-images.githubusercontent.com/86111316/140817145-989c2f30-196d-47c8-a9a6-1f506b44a3b5.png)
-![Simulator Screen Shot - iPhone 12 - 2021-11-08 at 23 56 24](https://user-images.githubusercontent.com/86111316/140817197-4c6573f7-37f2-4c19-b7b0-efc7d96e6df9.png)
+![imgonline-com-ua-twotoone-VRoNOYSqo8](https://user-images.githubusercontent.com/86111316/140818285-5d5d6be2-e117-405e-916d-f92b25674657.jpeg)
