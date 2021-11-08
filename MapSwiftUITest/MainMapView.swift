@@ -4,7 +4,7 @@ import MapKit
 struct MainMapView: View {
     @State var vm = MapModel()
     
-    @State var zonesArray: [[CLLocationCoordinate2D]] = [[]]
+    @State var zonesArray: [Zone] = []
     
     @State var isLoading = true
     
@@ -14,26 +14,25 @@ struct MainMapView: View {
         
         VStack {
             if isLoading {
-                ProgressView("Loading...")
+                LoadingView()
             } else {
                 ZStack {
                     MapViewCustom(region: vm.centerRegion, lineCoordinates: zonesArray)
                         .ignoresSafeArea()
-                    VStack {
-                        Text("\(Int(routeInMeters)) meters")
-                            .font(.system(size: 21, weight: .semibold))
-                        Spacer()
-                    }
+                    DistanceTextView(routeInMeters: $routeInMeters)
+                        .padding(.bottom, 50)
                 }
             }
         }
-        .onAppear(perform: preparePins)
+        .onAppear(perform: prepareDataForView)
     }
     
-    private func preparePins() {
+    
+    //Подготавливает данные для отображения на view
+    private func prepareDataForView() {
         vm.downloadAndPrepareCoordsArray(from: vm.url) { array in
             zonesArray = array
-            routeInMeters = vm.getDistanceOfRoutes(routes: zonesArray)
+            routeInMeters = vm.getZonesPerimetr(of: zonesArray)
             isLoading = false
         }
     }
@@ -44,5 +43,7 @@ struct ContentView_Previews: PreviewProvider {
         MainMapView()
     }
 }
+
+
 
 
