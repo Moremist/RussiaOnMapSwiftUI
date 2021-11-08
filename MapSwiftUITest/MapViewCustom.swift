@@ -1,10 +1,12 @@
 import SwiftUI
 import MapKit
 
+//Стандартной картой MapKit в SwiftUI не хватит для выполнения задачи, делаем кастом карту по протоколу UIViewRepresentable
+
 struct MapViewCustom: UIViewRepresentable {
     
     let region: MKCoordinateRegion
-    let lineCoordinates: [[CLLocationCoordinate2D]]
+    let lineCoordinates: [Zone]
     let mapViewDelegate = MapViewDelegate()
     
     func makeUIView(context: Context) -> MKMapView {
@@ -30,7 +32,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
 }
 
 extension MapViewCustom {
-    func addRoutes(coords: [[CLLocationCoordinate2D]], sender: MKMapView) {
+    func addRoutes(coords: [Zone], sender: MKMapView) {
         for coord in coords {
             var currentArea = coord
             

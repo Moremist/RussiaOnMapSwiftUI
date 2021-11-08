@@ -1,6 +1,8 @@
 import Foundation
 
-class MapData: Codable {
+//Модель GeoJSON
+
+class GeoJSONModel: Codable {
     let type: String
     let features: [Feature]
 

@@ -2,13 +2,20 @@ import Foundation
 import MapKit
 import SwiftUI
 
+//Примем массив координат за зону
+typealias Zone = [CLLocationCoordinate2D]
+
 struct MapModel {
     
     let url = URL(string: "https://waadsu.com/api/russia.geo.json")!
-    @State var coordsArray: [CLLocationCoordinate2D] = []
     
+    //Примерно центр страны
     @State var centerRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 64.66890367425933, longitude: 95.74478061855717), span: MKCoordinateSpan(latitudeDelta: 100, longitudeDelta: 100)
       )
+    
+    
+    
+    //Мой стандартный метод для работы с URLSession
     
     private func downloadData(from url: URL, complitionHandler: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url) { data, responce, error in
@@ -21,6 +28,8 @@ struct MapModel {
             }
         }.resume()
     }
+    
+    //Метод для обработки и анварпа полученных данных по URL
     
     private func networkDataHandler(from url: URL, complitionHandler: @escaping (Data) -> ()) {
         downloadData(from: url) { data, response, error in
@@ -36,15 +45,21 @@ struct MapModel {
         }
     }
     
-    private func decodeDataIntoMapData(from data: Data) -> MapData {
+    
+    // Декодер даты в экземпляр модели
+    
+    private func decodeDataIntoMapData(from data: Data) -> GeoJSONModel {
         do {
-            let decodedData = try JSONDecoder().decode(MapData.self, from: data)
+            let decodedData = try JSONDecoder().decode(GeoJSONModel.self, from: data)
             return decodedData
         } catch let error {
             print("Find error while decode data into MapData model", error)
             fatalError()
         }
     }
+    
+    
+    //Я оставил эту часть кода, так как понимаю, что GeoJSON можно распарсить обычным MKGeoJSONDecoder, но я с ним не работал и по данному GeoJSON находились координаты 180+, на что парсер ругался. Поэтому принято решение парсить самостоятельно.
     
 //    func decodeGeoJSON(data: Data) -> [MKOverlay] {
 //
@@ -67,11 +82,15 @@ struct MapModel {
 //        return overlays
 //    }
     
-    private func convertMapDataToZonesCoordinates(from data: MapData) -> [[CLLocationCoordinate2D]] {
-        var coordinatesArray: [[CLLocationCoordinate2D]] = [[]]
+    //Метод для преобразования экземпляра модели в набор зон координат.
+    
+    private func convertMapDataToZonesCoordinates(from data: GeoJSONModel) -> [Zone] {
+        var coordinatesArray: [Zone] = []
         data.features.first?.geometry.coordinates.flatMap { $0 }.map({ doubleArray in
             doubleArray.map { array in
-                return CLLocationCoordinate2D(latitude: array[1], longitude: array[0] < 180 ? array[0] : 180)
+                //longitude в GeoJSON по ссылке, как я писал выше, почему то бывает больше 180, хотя его диапазон -180 +180. Соответственно тут я это пытаюсь нивелировать.
+                let correctedLongitude = array[0] < 180 ? array[0] : array[0] - 360
+                return CLLocationCoordinate2D(latitude: array[1], longitude: correctedLongitude)
             }
         }).forEach({ cord in
             coordinatesArray.append(cord)
@@ -79,7 +98,9 @@ struct MapModel {
         return coordinatesArray
     }
     
-    func downloadAndPrepareCoordsArray(from url: URL, complitionHandler: @escaping ([[CLLocationCoordinate2D]]) -> ()) {
+    
+    //Комплексный метод преображения URL в набор координат зон
+    func downloadAndPrepareCoordsArray(from url: URL, complitionHandler: @escaping ([Zone]) -> ()) {
         networkDataHandler(from: url) { [self] downloadedData in
             let decodedData = decodeDataIntoMapData(from: downloadedData)
             let preparedArray = convertMapDataToZonesCoordinates(from: decodedData)
@@ -87,22 +108,24 @@ struct MapModel {
         }
     }
     
-    func getDistanceOfRoutes(routes: [[CLLocationCoordinate2D]]) -> Double {
+    //Функции подсчета длинны границ
+    
+    func getZonesPerimetr(of arrayOfZones: [Zone]) -> Double {
         var total: Double = 0.0
-        for route in routes {
-            total += getDistanceOfRoute(route: route)
+        for zone in arrayOfZones {
+            total += getZonePerimetr(of: zone)
         }
         return total
     }
     
-    private func getDistanceOfRoute(route: [CLLocationCoordinate2D]) -> Double {
+    private func getZonePerimetr(of zone: Zone) -> Double {
         var total: Double = 0.0
-        if route.count < 2 {
+        if zone.count < 2 {
             return 0
         }
-        for i in 0..<route.count - 1 {
-            let start = route[i]
-            let end = route[i + 1]
+        for i in 0..<zone.count - 1 {
+            let start = zone[i]
+            let end = zone[i + 1]
             let distance = getDistance(from: start, to: end)
             total += distance
         }
